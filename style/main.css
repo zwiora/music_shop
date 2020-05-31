@@ -1,0 +1,477 @@
+body * {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+body > div {
+  display: none !important;
+}
+
+body {
+  background-color: #F4F7F7;
+  color: #34495E;
+}
+body h1 {
+  font-size: 3em;
+}
+body h2 {
+  font-size: 2em;
+}
+body a {
+  color: #34495E;
+}
+body a:hover {
+  color: #34495E;
+  text-decoration: none;
+}
+body h4 {
+  color: #707070;
+  font-size: 1em;
+}
+body section {
+  text-align: center;
+  padding: 5%;
+}
+body section h2 {
+  margin-bottom: 5%;
+}
+body section article {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+body section figure {
+  border-radius: 1em;
+  overflow: hidden;
+}
+body section figure img {
+  width: 100%;
+}
+
+.header {
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  top: 0;
+  padding: 1%;
+  background-color: #AACFD0;
+  color: #F4F7F7;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.header a {
+  color: #F4F7F7;
+}
+.header a:hover {
+  color: #F4F7F7;
+  text-decoration: none;
+}
+.header h1 {
+  padding-left: 2%;
+  flex-basis: 50%;
+  font-size: 3em;
+}
+.header nav {
+  flex-basis: 50%;
+  text-align: center;
+  font-size: 1.5em;
+  justify-content: space-around;
+  display: flex;
+}
+.header nav a {
+  flex-basis: 15%;
+  transition-duration: 0.5s;
+}
+.header nav a:hover {
+  color: #5DA0A2;
+}
+.header nav label {
+  flex-basis: 30%;
+  background-color: #F4F7F7;
+  padding: 0.5%;
+  border-radius: 1em;
+  color: #34495E;
+  overflow: hidden;
+}
+.header nav label input {
+  background-color: #F4F7F7;
+  border: 0;
+  width: 80%;
+}
+.header nav label button {
+  background-color: #F4F7F7;
+  border: 0;
+}
+.header nav label button i {
+  color: #34495E;
+  margin-right: 10%;
+}
+.header nav .basket {
+  flex-basis: 10%;
+}
+.header nav .basket:hover {
+  background-color: #AACFD0;
+}
+
+footer {
+  background-color: #AACFD0;
+  text-align: center;
+  padding: 2%;
+}
+footer a {
+  color: #F4F7F7;
+  margin: 0 5%;
+  font-size: 2em;
+  transition-duration: 0.5s;
+}
+footer a:hover {
+  color: #5DA0A2;
+  text-decoration: none;
+}
+footer p {
+  margin: 2%;
+}
+
+.index > figure {
+  height: 100vh;
+  background: url("../img/other/piano.jpg");
+  background-size: cover;
+  text-align: center;
+}
+.index > figure a {
+  background-color: #AACFD0;
+  color: #F4F7F7;
+  font-size: 2em;
+  border-radius: 2em;
+  margin: auto;
+  padding: 3%;
+  position: relative;
+  top: 50vh;
+  transition-duration: 0.5s;
+}
+.index > figure a:hover {
+  color: #F4F7F7;
+  background-color: #5DA0A2;
+}
+.index section:nth-child(3) {
+  background-color: #AACFD0;
+}
+.index section:nth-child(3) a {
+  background-color: #F4F7F7;
+  transition-duration: 0.5s;
+}
+.index section:nth-child(3) a:hover {
+  background-color: #5DA0A2;
+}
+
+.product .basic_info {
+  padding: 8% 2%;
+  padding-bottom: 0;
+}
+.product .basic_info header {
+  margin-bottom: 2%;
+}
+.product .basic_info main {
+  padding: 0 10%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.product .basic_info main section {
+  background-color: #AACFD0;
+  flex-basis: 33%;
+  border-radius: 3em;
+  height: 65vh;
+  padding: 3%;
+}
+.product .basic_info main section figure {
+  border: 0.5px solid #707070;
+}
+.product .basic_info main article {
+  flex-basis: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+.product .basic_info main article p {
+  font-size: 1.5em;
+  color: #707070;
+}
+.product .basic_info main article a {
+  background-color: #AACFD0;
+  padding: 1em;
+  width: 60%;
+  margin: 15% auto;
+  border-radius: 2em;
+  font-size: 1em;
+  color: #F4F7F7;
+  transition-duration: 0.5s;
+}
+.product .basic_info main article a:hover {
+  color: #5DA0A2;
+}
+.product .basic_info main .details {
+  padding: 3%;
+}
+.product .basic_info main .details h2 {
+  margin-bottom: 3%;
+}
+
+.discover {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-row-gap: 2%;
+  grid-column-gap: 2%;
+  padding: 2%;
+}
+.discover h1 {
+  grid-column: 1/3;
+  text-align: center;
+  margin-top: 6%;
+}
+.discover .filters {
+  padding: 7%;
+  border-radius: 1em;
+  background-color: #AACFD0;
+  align-self: start;
+}
+.discover .filters h2 {
+  text-align: center;
+}
+.discover .filters form {
+  display: flex;
+  flex-direction: column;
+}
+.discover .filters form h3 {
+  text-align: center;
+  font-size: 1.5em;
+  color: #707070;
+  margin-top: 7%;
+  margin-bottom: 1%;
+}
+.discover .filters form label {
+  width: 50%;
+  margin: 1% auto;
+}
+.discover .filters form label input {
+  margin-right: 5%;
+}
+.discover .filters form .submit {
+  width: 40%;
+  margin: 5% auto;
+  border: 0;
+  padding: 5%;
+  border-radius: 0.5em;
+  font-size: 1em;
+  color: #34495E;
+  background-color: #F4F7F7;
+  transition-duration: 0.5s;
+}
+.discover .filters form .submit:hover {
+  background-color: #5DA0A2;
+}
+.discover .discover_list {
+  padding: 0;
+}
+.discover .discover_list article .card {
+  flex-basis: 22%;
+  padding: 1.5%;
+  margin-bottom: 3%;
+}
+.discover .discover_list article .card figcaption {
+  padding-top: 2%;
+}
+.discover .discover_list article .card figcaption h3 {
+  font-size: 1.5em;
+}
+.discover .discover_list article .card figcaption h4 {
+  margin: 2% 0;
+}
+.discover .discover_list article .card figcaption h2 {
+  font-size: 1em;
+  font-weight: bold;
+}
+.discover .discover_list article .card figcaption p {
+  font-size: 1em;
+}
+
+.basket h1 {
+  text-align: center;
+  margin-top: 7%;
+}
+.basket .basket_list {
+  padding: 1%;
+  padding-bottom: 0;
+}
+.basket .basket_list article {
+  background-color: #AACFD0;
+  width: 80%;
+  margin: 2% auto;
+  padding: 2%;
+  border-radius: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
+}
+.basket .basket_list article main {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+.basket .basket_list article main h2 {
+  font-size: 3em;
+  margin-bottom: 5%;
+}
+.basket .basket_list article main h3 {
+  margin-top: 5%;
+}
+.basket .basket_list article main h4 {
+  margin: 1%;
+}
+.basket .basket_list article aside input {
+  background-color: #F4F7F7;
+  padding: 0.5em;
+  width: 50%;
+  margin: 0% auto 10% auto;
+  border-radius: 1em;
+  border: 0;
+  text-align: center;
+  font-size: 1.5em;
+}
+.basket .basket_list article aside h2 {
+  font-size: 3em;
+  margin: 0;
+}
+.basket .address {
+  background-color: #AACFD0;
+}
+.basket .all {
+  padding: 3%;
+}
+.basket .all main {
+  margin: auto;
+  background-color: #AACFD0;
+  width: 40%;
+  padding: 1.5em;
+  border-radius: 1em;
+}
+.basket .all main h1 {
+  margin: 0;
+}
+.basket .all main .buy {
+  margin-top: 5%;
+  width: 15%;
+  border: 0;
+  padding: 1em;
+  border-radius: 0.5em;
+  font-size: 1em;
+  color: #34495E;
+  background-color: #F4F7F7;
+  transition-duration: 0.5s;
+}
+.basket .all main .buy:hover {
+  background-color: #5DA0A2;
+}
+.basket .similar {
+  padding-top: 0;
+}
+
+.contact h1 {
+  text-align: center;
+  margin-top: 7%;
+}
+.contact .most_popular {
+  margin: 0;
+  padding: 2%;
+}
+.contact .most_popular article {
+  background-color: #AACFD0;
+  width: 80%;
+  margin: auto;
+  padding: 3% 5%;
+  border-radius: 1em;
+}
+.contact .most_popular article input, .contact .most_popular article textarea {
+  width: 100%;
+  padding: 1%;
+  margin-bottom: 2%;
+  text-align: center;
+  font-size: 1.2em;
+  border-radius: 1em;
+  border: 0;
+  background-color: #F4F7F7;
+}
+.contact .most_popular article .bttn {
+  width: 20%;
+  margin: 0;
+  margin-top: 2%;
+  transition-duration: 0.5s;
+  color: #34495E;
+}
+.contact .most_popular article .bttn:hover {
+  background-color: #5DA0A2;
+}
+.contact .similar {
+  padding-top: 2%;
+}
+
+.card {
+  background-color: #AACFD0;
+  padding: 2%;
+  flex-basis: 25%;
+  border-radius: 1em;
+  transition-duration: 0.5s;
+}
+.card figcaption {
+  padding-top: 4%;
+}
+.card figcaption h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.card figcaption h4 {
+  margin: 3% 0;
+}
+.card figcaption p {
+  font-size: 1.5em;
+}
+.card:hover {
+  background-color: #5DA0A2;
+}
+
+.card-small {
+  background-color: #AACFD0;
+  padding: 2%;
+  flex-basis: 20%;
+  border-radius: 1em;
+  transition-duration: 0.5s;
+}
+.card-small figcaption {
+  padding-top: 4%;
+}
+.card-small figcaption h2 {
+  font-size: 1em;
+  font-weight: bold;
+}
+.card-small figcaption h3 {
+  font-size: 1.5em;
+}
+.card-small figcaption h4 {
+  margin: 3% 0;
+}
+.card-small figcaption p {
+  font-size: 1em;
+}
+.card-small:hover {
+  background-color: #5DA0A2;
+}
+
+/*# sourceMappingURL=main.css.map */

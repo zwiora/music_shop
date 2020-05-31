@@ -1,0 +1,77 @@
+@import "../settings/variables";
+
+.product {
+
+  .basic_info {
+    padding: 8% 2%;
+    padding-bottom: 0;
+
+    header {
+      margin-bottom: 2%;
+    }
+
+    main {
+      padding: 0 10%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      section {
+        background-color: $clrMain;
+        flex-basis: 33%;
+        border-radius: 3em;
+
+        height: 65vh;
+
+        padding: 3%;
+
+        figure {
+          border: 0.5px solid $clrGrey;
+        }
+      }
+
+      article {
+        flex-basis: 33%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+
+        p {
+          font-size: 1.5em;
+          color: $clrGrey;
+        }
+
+        a {
+          background-color: $clrMain;
+
+          padding: 1em;
+
+          width: 60%;
+          margin: 15% auto;
+          border-radius: 2em;
+
+          font-size: 1em;
+
+          color: $clrLight;
+
+          transition-duration: 0.5s;
+
+          &:hover {
+            color: $clrDark;
+          }
+        }
+      }
+
+      .details {
+        padding: 3%;
+
+        h2 {
+          margin-bottom: 3%;
+        }
+      }
+    }
+  }
+
+
+}

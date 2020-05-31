@@ -1,0 +1,61 @@
+@import "../settings/variables";
+
+body {
+  background-color: $clrLight;
+
+  color: $clrFont;
+
+  h1 {
+    font-size: 3em;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+  a {
+    color: $clrFont;
+
+    &:hover {
+      color: $clrFont;
+      text-decoration: none;
+    }
+  }
+
+  h4 {
+    color: $clrGrey;
+    font-size: 1em;
+  }
+
+  section {
+
+    text-align: center;
+
+    padding: 5%;
+
+    h2 {
+      margin-bottom: 5%;
+    }
+
+    article {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      align-content: space-between;
+    }
+
+
+    figure {
+
+      border-radius: 1em;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+
+}
+

@@ -1,0 +1,108 @@
+@import "../settings/variables";
+
+.basket {
+
+  h1 {
+    text-align: center;
+    margin-top: 7%;
+  }
+
+  .basket_list {
+    padding: 1%;
+
+    article {
+      background-color: $clrMain;
+
+      width: 80%;
+      margin: 2% auto;
+      padding: 2%;
+
+      border-radius: 1em;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+
+      align-items: center;
+
+      main{
+        grid-column-start: 2;
+        grid-column-end: 4;
+
+        h2{
+          font-size: 3em;
+          margin-bottom: 5%;
+        }
+        h3{
+          margin-top: 5%;
+        }
+
+        h4{
+          margin: 1%;
+        }
+      }
+
+      aside{
+        input{
+          background-color: $clrLight;
+          padding: 0.5em;
+          width: 50%;
+          margin: 0% auto 10% auto;
+          border-radius: 1em;
+          border: 0;
+          text-align: center;
+          font-size: 1.5em;
+
+        }
+        h2{
+          font-size: 3em;
+          margin: 0;
+        }
+      }
+    }
+    padding-bottom: 0;
+  }
+
+  .address{
+    background-color: $clrMain;
+  }
+
+  .all {
+    padding: 3%;
+    main {
+      margin: auto;
+
+      background-color: $clrMain;
+      width: 40%;
+      padding: 1.5em;
+
+      border-radius: 1em;
+
+      h1{
+        margin: 0;
+      }
+
+      .buy {
+        margin-top: 5%;
+
+        width: 15%;
+        border: 0;
+        padding: 1em;
+        border-radius: 0.5em;
+
+        font-size: 1em;
+        color: $clrFont;
+        background-color: $clrLight;
+
+        transition-duration: 0.5s;
+
+        &:hover {
+          background-color: $clrDark;
+        }
+      }
+    }
+  }
+
+  .similar{
+    padding-top: 0;
+  }
+}

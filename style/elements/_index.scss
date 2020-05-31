@@ -1,0 +1,46 @@
+@import "../settings/variables";
+
+.index {
+
+  > figure {
+    height: 100vh;
+    background: url("../img/other/piano.jpg");
+    background-size: cover;
+
+    text-align: center;
+
+    a {
+      background-color: $clrMain;
+      color: $clrLight;
+      font-size: 2em;
+
+      border-radius: 2em;
+      margin: auto;
+      padding: 3%;
+
+      position: relative;
+      top: 50vh;
+
+      transition-duration: 0.5s;
+
+      &:hover {
+        color: $clrLight;
+        background-color: $clrDark;
+      }
+    }
+  }
+
+  section:nth-child(3) {
+    background-color: $clrMain;
+
+    a {
+      background-color: $clrLight;
+
+      transition-duration: 0.5s;
+
+      &:hover{
+        background-color: $clrDark;
+      }
+    }
+  }
+}

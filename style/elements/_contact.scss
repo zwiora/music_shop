@@ -1,0 +1,54 @@
+@import "../settings/variables";
+
+.contact{
+  h1 {
+    text-align: center;
+    margin-top: 7%;
+  }
+
+  .most_popular{
+
+    margin: 0;
+    padding: 2%;
+
+    article{
+      background-color: $clrMain;
+      width: 80%;
+      margin: auto;
+      padding: 3% 5%;
+
+      border-radius: 1em;
+
+      input, textarea{
+        width: 100%;
+        padding: 1%;
+        margin-bottom: 2%;
+
+        text-align: center;
+        font-size: 1.2em;
+
+        border-radius: 1em;
+        border: 0;
+
+        background-color: $clrLight;
+      }
+
+      .bttn{
+        width: 20%;
+        margin: 0;
+        margin-top: 2%;
+
+        transition-duration: 0.5s;
+        &:hover{
+          background-color: $clrDark;
+        }
+
+        color: $clrFont;
+      }
+    }
+  }
+
+  .similar{
+    padding-top: 2%;
+  }
+}

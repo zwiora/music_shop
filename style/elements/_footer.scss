@@ -1,0 +1,24 @@
+@import "../settings/variables";
+
+footer {
+  background-color: $clrMain;
+  text-align: center;
+
+  padding: 2%;
+
+  a {
+    color: $clrLight;
+    margin: 0 5%;
+    font-size: 2em;
+
+    transition-duration: 0.5s;
+    &:hover {
+      color: $clrDark;
+      text-decoration: none;
+    }
+  }
+
+  p {
+    margin: 2%;
+  }
+}
