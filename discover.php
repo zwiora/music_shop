@@ -53,60 +53,26 @@ require_once "element/header.php";
             if (!$connection) {
                 echo "Blad: " . mysqli_connect_error();
             } else {
-                $sql= "SELECT * FROM `products` ORDER BY `Id`  ASC";
+                $sql = "SELECT * FROM `products` INNER JOIN instruments ON instruments.Instrument_id = products.Instrument INNER JOIN difficulty ON difficulty.Difficulty_id = products.Difficulty";
                 if ($result = $connection->query($sql)) {
 
-                    /* determine number of rows result set */
-                    $row_cnt = $result->num_rows;
-
-                    printf("Result set has %d rows.\n", $row_cnt);
-
                     while ($row = $result->fetch_assoc()) {
-                            echo "<a href=\"product.php\" class=\"card\">
-    <figure><img src=img/product_preview/".$row['Image']." alt=\"scores\">
+                        echo "<a href=\"product.php\" class=\"card\">
+    <figure><img src=img/product_preview/" . $row['Image'] . " alt=\"scores\">
         <figcaption>
-            <h3>".$row['Title']."</h3>
-            <h4>by ".$row['Composer']."</h4>
-            <h4>piano - intermediate</h4>
-            <p>15,99zł</p>
+            <h3>" . $row['Title'] . "</h3>
+            <h4>by " . $row['Composer'] . "</h4>
+            <h4>" . $row['Instruments_name'] . " - " . $row['Difficulty_name'] . "</h4>
+            <p>" . $row['Price'] . " zł</p>
         </figcaption>
     </figure>
 </a>";
-                        }
+                    }
 
                     /* close result set */
                     $result->close();
                 }
             }
-
-//            session_start();
-//
-//            require_once "connect.php";
-//
-//            $connection = new mysqli($host, $dbUser, $dbPassword, $dbName);
-//
-//            if ($connection->connect_errno != 0) {
-//                echo "Error: " . $connection->connect_errno;
-//
-//                return NULL;
-//            } else {
-//
-//                $sql = "SELECT * FROM fotografia";
-//
-//                if ($result = $connection->query($sql)) {
-//
-//                    $numberOfRows = $result->num_rows;
-//
-//                    if ($numberOfRows > 0) {
-//                        while ($row = $result->fetch_assoc()) {
-//                            echo "<a href=photo.php?id=" . $row["id"] . " class='col-sm-6 col-md-4 col-lg-3'><img src='Images/photos_small/"
-//                                . $row["nazwa_pliku"] . "'></a>";
-//                        }
-//                        print_r($row);
-//                    }
-//                }
-//            }
-
             ?>
         </article>
     </section>
