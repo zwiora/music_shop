@@ -8,5 +8,3 @@
         </figcaption>
     </figure>
 </a>
-
-SELECT * FROM `products` INNER JOIN instruments ON instruments.Instrument_id = products.Instrument INNER JOIN difficulty ON difficulty.Difficulty_id = products.Difficulty
