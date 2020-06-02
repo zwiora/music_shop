@@ -38,8 +38,6 @@ require_once "element/header.php";
         <article>
             <?php
 
-            session_start();
-
             require_once "connect.php";
 
             $connection = new mysqli($host, $dbUser, $dbPassword, $dbName);
@@ -67,7 +65,6 @@ require_once "element/header.php";
 </a>";
                         $i++;
                     }
-
                 }
 
                 /* close result set */

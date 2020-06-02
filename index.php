@@ -16,8 +16,6 @@
 
 require_once "element/header.php";
 
-session_start();
-
 require_once "connect.php";
 
 $connection = new mysqli($host, $dbUser, $dbPassword, $dbName);
@@ -37,7 +35,7 @@ if (!$connection) {
                 <a href="discover.php?instr=0&dif=0">Discover</a>
             </figure>
             <section class="most_popular">
-                <h2>Most popular</h2>
+                <h2>Most popular<?= $_SESSION['x'] ?></h2>
                 <article>
                     <?php
 

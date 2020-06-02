@@ -15,9 +15,6 @@
 <?php
 
 require_once "element/header.php";
-
-session_start();
-
 require_once "connect.php";
 
 $connection = new mysqli($host, $dbUser, $dbPassword, $dbName);
@@ -46,7 +43,9 @@ $row = $result->fetch_assoc();
             <article><h2><?= $row['Price'] ?> zł</h2>
                 <p><?= $row['Instruments_name'] ?></p>
                 <p><?= $row['Difficulty_name'] ?></p>
-                <a href="#">Add to basket</a>
+                <?php
+                echo "<a href=\"script/addToBasket.php?id=". $row['Id'] ." \">Add to basket</a>";
+                ?>
             </article>
             <section class="details">
                 <h2>Details</h2>
