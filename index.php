@@ -43,7 +43,7 @@ if (!$connection) {
 
                     while ($i < 3) {
                         $row = $result->fetch_assoc();
-                        echo "<a href=\"product.php\" class=\"card\">
+                        echo "<a href=\"product.php?id=".$row['Id']."\" class=\"card\">
     <figure><img src=img/product_preview/" . $row['Image'] . " alt=\"scores\">
         <figcaption>
             <h3>" . $row['Title'] . "</h3>
@@ -65,7 +65,7 @@ if (!$connection) {
 
                     while ($i < 6) {
                         $row = $result->fetch_assoc();
-                        echo "<a href=\"product.php\" class=\"card\">
+                        echo "<a href=\"product.php?id=".$row['Id']."\" class=\"card\">
     <figure><img src=img/product_preview/" . $row['Image'] . " alt=\"scores\">
         <figcaption>
             <h3>" . $row['Title'] . "</h3>
@@ -87,7 +87,7 @@ if (!$connection) {
 
                     while ($i < 9) {
                         $row = $result->fetch_assoc();
-                        echo "<a href=\"product.php\" class=\"card\">
+                        echo "<a href=\"product.php?id=".$row['Id']."\" class=\"card\">
     <figure><img src=img/product_preview/" . $row['Image'] . " alt=\"scores\">
         <figcaption>
             <h3>" . $row['Title'] . "</h3>
@@ -112,7 +112,7 @@ if (!$connection) {
     $result->close();
 
 }
-?>
+
 
 require_once "element/footer.php";
 

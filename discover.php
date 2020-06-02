@@ -57,7 +57,7 @@ require_once "element/header.php";
                 if ($result = $connection->query($sql)) {
 
                     while ($row = $result->fetch_assoc()) {
-                        echo "<a href=\"product.php\" class=\"card\">
+                        echo "<a href=\"product.php?id=".$row['Id']."\" class=\"card\">
     <figure><img src=img/product_preview/" . $row['Image'] . " alt=\"scores\">
         <figcaption>
             <h3>" . $row['Title'] . "</h3>
