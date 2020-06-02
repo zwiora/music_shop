@@ -265,18 +265,19 @@ footer p {
 .discover .filters form label input {
   margin-right: 5%;
 }
-.discover .filters form .submit {
+.discover .filters form .bttn {
   width: 40%;
   margin: 5% auto;
   border: 0;
   padding: 5%;
   border-radius: 0.5em;
+  text-align: center;
   font-size: 1em;
   color: #34495E;
   background-color: #F4F7F7;
   transition-duration: 0.5s;
 }
-.discover .filters form .submit:hover {
+.discover .filters form .bttn:hover {
   background-color: #5DA0A2;
 }
 .discover .discover_list {

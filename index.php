@@ -34,7 +34,7 @@ if (!$connection) {
 
         <main class="index">
             <figure>
-                <a href="discover.php">Discover</a>
+                <a href="discover.php?instr=0&dif=0">Discover</a>
             </figure>
             <section class="most_popular">
                 <h2>Most popular</h2>
