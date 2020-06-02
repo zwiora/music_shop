@@ -16,43 +16,82 @@
 
 require_once "element/header.php";
 
+session_start();
+
+require_once "connect.php";
+
+$connection = new mysqli($host, $dbUser, $dbPassword, $dbName);
+
+if (!$connection) {
+    echo "Blad: " . mysqli_connect_error();
+} else {
+$sql = "SELECT * FROM `products` INNER JOIN instruments ON instruments.Instrument_id = products.Instrument INNER JOIN difficulty ON difficulty.Difficulty_id = products.Difficulty WHERE products.Id = " . $_GET["id"];
+if ($result = $connection->query($sql)) {
+$row = $result->fetch_assoc();
+
 ?>
 
 <main class="product">
     <section class="basic_info">
         <header>
-            <h1>We are the world</h1>
-            <p>by Lionel Richie & Michael Jackson</p>
+            <h1><?= $row['Title'] ?></h1>
+            <p>by <?= $row['Composer'] ?></p>
         </header>
         <main>
             <section>
                 <figure>
-                    <img src="img/product/we_are_the_world.png" alt="scores">
+                    <img src="img/product/<?= $row['Image'] ?>" alt="scores">
                 </figure>
             </section>
-            <article><h2>15,99zł</h2>
-                <p>piano</p>
-                <p>intermediate</p>
+            <article><h2><?= $row['Price'] ?> zł</h2>
+                <p><?= $row['Instruments_name'] ?></p>
+                <p><?= $row['Difficulty_name'] ?></p>
                 <a href="#">Add to basket</a>
             </article>
             <section class="details">
                 <h2>Details</h2>
-                <p><span>Lorem ipsum dolor sit Cum error eveniet illo necessitatibus officia sapiente suscipit. Aliquid amet atque autem doloremque ducimus enim expedita fugit ipsa libero magnam minima modi natus nesciunt nisi, optio rem rerum sapiente ullam!</span><span>Est hic minima nesciunt quaerat qui quo recusandae temporibus. At atque dolore itaque officiis. At autem, dolorem! Adipisci architecto cupiditate itaque, obcaecati officia quia reprehenderit. Cupiditate esse fugit magnam suscipit!</span>
-                </p>
+                <p><?= $row['Details'] ?></p>
             </section>
         </main>
     </section>
     <section class="similar">
-    <h2>Similar products</h2>
-    <article>
-        <?php
+        <h2>Similar products</h2>
+        <article>
+            <?php
 
-        for ($i = 0; $i < 4; $i++) {
-            include "element/card_small.php";
-        }
+            /* close result set */
+            $result->close();
 
-        ?>
-    </article>
+            }
+
+            $sql = "SELECT * FROM `products` INNER JOIN instruments ON instruments.Instrument_id = products.Instrument INNER JOIN difficulty ON difficulty.Difficulty_id = products.Difficulty ORDER BY `Id` ASC";
+            if ($result = $connection->query($sql)) {
+
+                $i = 0;
+
+                while ($i < 4) {
+                    $row = $result->fetch_assoc();
+                    echo "<a href=\"product.php?id=" . $row['Id'] . "\" class=\"card-small\">
+    <figure><img src=img/product_preview/" . $row['Image'] . " alt=\"scores\">
+        <figcaption>
+            <h3>" . $row['Title'] . "</h3>
+            <h4>by " . $row['Composer'] . "</h4>
+            <h4>" . $row['Instruments_name'] . " - " . $row['Difficulty_name'] . "</h4>
+            <p>" . $row['Price'] . " zł</p>
+        </figcaption>
+    </figure>
+</a>";
+                    $i++;
+                }
+
+            }
+
+            /* close result set */
+            $result->close();
+
+            }
+            ?>
+        </article>
     </section>
 </main>
 

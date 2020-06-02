@@ -3,4 +3,4 @@
 $host = 'localhost';
 $dbUser = 'root';
 $dbPassword = '';
-$dbName = 'foto';
+$dbName = 'music_shop';

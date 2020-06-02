@@ -4,7 +4,7 @@
     </h1>
     <nav>
         <a href="index.php">home</a>
-        <a href="discover.php">discover</a>
+        <a href="discover.php?instr=0&dif=0">discover</a>
         <label for="search">
             <input id="search" type="text">
             <button><i class="fas fa-search"></i></button>
