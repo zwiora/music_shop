@@ -50,8 +50,7 @@ $row = $result->fetch_assoc();
             </article>
             <section class="details">
                 <h2>Details</h2>
-                <p><span>Lorem ipsum dolor sit Cum error eveniet illo necessitatibus officia sapiente suscipit. Aliquid amet atque autem doloremque ducimus enim expedita fugit ipsa libero magnam minima modi natus nesciunt nisi, optio rem rerum sapiente ullam!</span><span>Est hic minima nesciunt quaerat qui quo recusandae temporibus. At atque dolore itaque officiis. At autem, dolorem! Adipisci architecto cupiditate itaque, obcaecati officia quia reprehenderit. Cupiditate esse fugit magnam suscipit!</span>
-                </p>
+                <p><?= $row['Details'] ?></p>
             </section>
         </main>
     </section>
