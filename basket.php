@@ -22,6 +22,12 @@ require_once "element/header.php";
     <h1>Your list</h1>
     <section class="basket_list">
         <article>
+            <?php
+
+            for($i = 0; $i < $_SESSION['x']; $i++){
+                echo $_SESSION['id'.$i]."<br>";
+            }
+            ?>
             <figure>
                 <img src="img/product/we_are_the_world.png" alt="scores">
             </figure>
