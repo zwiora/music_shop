@@ -15,86 +15,99 @@
 <?php
 
 require_once "element/header.php";
+require_once "connect.php";
 
-?>
+$connection = new mysqli($host, $dbUser, $dbPassword, $dbName);
 
-<main class="basket">
-    <h1>Your list</h1>
-    <section class="basket_list">
-        <article>
-            <figure>
-                <img src="img/product/we_are_the_world.png" alt="scores">
-            </figure>
-            <main>
-                <h2>We are the world</h2>
-                <h4>by Lionel Richie & Michael Jackson</h4>
-                <h4>piano - intermediate</h4>
-                <h3>15,99zł</h3>
-            </main>
-            <aside>
-                <input value="1">
-                <h2>15,99zł</h2>
-            </aside>
-        </article>
-        <article>
-            <figure>
-                <img src="img/product/we_are_the_world.png" alt="scores">
-            </figure>
-            <main>
-                <h2>We are the world</h2>
-                <h4>by Lionel Richie & Michael Jackson</h4>
-                <h4>piano - intermediate</h4>
-                <h3>15,99zł</h3>
-            </main>
-            <aside>
-                <input value="1">
-                <h2>15,99zł</h2>
-            </aside>
-        </article>
-        <article>
-            <figure>
-                <img src="img/product/we_are_the_world.png" alt="scores">
-            </figure>
-            <main>
-                <h2>We are the world</h2>
-                <h4>by Lionel Richie & Michael Jackson</h4>
-                <h4>piano - intermediate</h4>
-                <h3>15,99zł</h3>
-            </main>
-            <aside>
-                <input value="1">
-                <h2>15,99zł</h2>
-            </aside>
-        </article>
-    </section>
-<!--    <section class="address">-->
-<!--        <h2>Address</h2>-->
-<!--        <label for="aName">First name</label><input id="aName" class="a_input">-->
-<!--        <label for="aSurname">Second name</label><input id="aSurname" class="a_input">-->
-<!--        <label for="aAddress">Address</label><textarea id="aAddress" class="a_input"></textarea>-->
-<!--    </section>-->
-    <section class="all">
-        <main>
-            <h2>3 products</h2>
-            <h1>47,97zł</h1>
-            <input type="submit" class="buy" value="Buy">
-        </main>
-    </section>
-    <section class="similar">
-        <h2>You may also like</h2>
-        <article>
+$fullPrice = 0;
+
+if (!$connection) {
+    echo "Blad: " . mysqli_connect_error();
+} else {
+
+
+    ?>
+
+    <main class="basket">
+        <h1>Your list</h1>
+        <section class="basket_list">
             <?php
 
-            for ($i = 0; $i < 4; $i++) {
-                include "element/card_small.php";
+            for ($i = 0; $i < $_SESSION['xDifferent']; $i++) {
+
+                $sql = "SELECT * FROM `products` INNER JOIN instruments ON instruments.Instrument_id = products.Instrument INNER JOIN difficulty ON difficulty.Difficulty_id = products.Difficulty WHERE products.Id = " . $_SESSION['id' . $i];
+
+                if ($result = $connection->query($sql)) {
+                    $row = $result->fetch_assoc();
+
+                    $fullPrice += $row['Price'] * $_SESSION['number' . $i];
+                    ?>
+                    <article>
+                        <figure>
+                            <?php
+                            echo "<img src=\"img/product/" . $row['Image'] . "\" alt=\"scores\">"
+                            ?>
+                        </figure>
+                        <main>
+                            <h2><?= $row['Title'] ?></h2>
+                            <h4>by <?= $row['Composer'] ?></h4>
+                            <h4><?= $row['Instruments_name'] ?> - <?= $row['Difficulty_name'] ?></h4>
+                            <h3><?= $row['Price'] ?> zł</h3>
+                        </main>
+                        <aside>
+                            <p class="products_count"><?= $_SESSION['number' . $i] ?></p>
+                            <h2><?= $row['Price'] * $_SESSION['number' . $i] ?> zł</h2>
+                        </aside>
+                    </article>
+                    <?php
+                }
             }
-
             ?>
-        </article>
-    </section>
-</main>
+        </section>
+        <section class="all">
+            <main>
+                <h2><?= $_SESSION['x'] ?> products</h2>
+                <h1><?= $fullPrice ?> zł</h1>
+                <input type="submit" class="buy" value="Buy">
+            </main>
+        </section>
+        <section class="similar">
+            <h2>You may also like</h2>
+            <article>
+                <?php
 
-<?php
+                $sql = "SELECT * FROM `products` INNER JOIN instruments ON instruments.Instrument_id = products.Instrument INNER JOIN difficulty ON difficulty.Difficulty_id = products.Difficulty ORDER BY `Id` ASC";
+                if ($result = $connection->query($sql)) {
+
+                    $i = 0;
+
+                    while ($i < 4) {
+                        $row = $result->fetch_assoc();
+                        echo "<a href=\"product.php?id=" . $row['Id'] . "\" class=\"card-small\">
+    <figure><img src=img/product_preview/" . $row['Image'] . " alt=\"scores\">
+        <figcaption>
+            <h3>" . $row['Title'] . "</h3>
+            <h4>by " . $row['Composer'] . "</h4>
+            <h4>" . $row['Instruments_name'] . " - " . $row['Difficulty_name'] . "</h4>
+            <p>" . $row['Price'] . " zł</p>
+        </figcaption>
+    </figure>
+</a>";
+                        $i++;
+                    }
+
+                }
+
+                /* close result set */
+                $result->close();
+
+                ?>
+            </article>
+        </section>
+    </main>
+
+    <?php
+}
 
 require_once "element/footer.php";
 

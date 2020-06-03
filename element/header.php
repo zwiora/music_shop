@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(!isset($_SESSION['x'])){
+    $_SESSION['x'] = 0;
+    $_SESSION['xDifferent'] = 0;
+}
+?>
+
 <header class="header">
     <h1>
         <a href="index.php">Ad libitum</a>
@@ -11,7 +19,7 @@
         </label>
         <a href="basket.php" class="basket">
             <i class="fas fa-shopping-cart"></i>
-            1
+            <?= $_SESSION['x'] ?>
         </a>
     </nav>
 </header>
