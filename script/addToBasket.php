@@ -18,4 +18,4 @@ if(!$ready){
 }
 $_SESSION['x']++;
 
-//header('Location: ../product.php?id=' . $_GET['id']);
+header('Location: ../product.php?id=' . $_GET['id']);

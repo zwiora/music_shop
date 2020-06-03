@@ -76,9 +76,30 @@ if (!$connection) {
             <article>
                 <?php
 
-                for ($i = 0; $i < 4; $i++) {
-                    include "element/card_small.php";
+                $sql = "SELECT * FROM `products` INNER JOIN instruments ON instruments.Instrument_id = products.Instrument INNER JOIN difficulty ON difficulty.Difficulty_id = products.Difficulty ORDER BY `Id` ASC";
+                if ($result = $connection->query($sql)) {
+
+                    $i = 0;
+
+                    while ($i < 4) {
+                        $row = $result->fetch_assoc();
+                        echo "<a href=\"product.php?id=" . $row['Id'] . "\" class=\"card-small\">
+    <figure><img src=img/product_preview/" . $row['Image'] . " alt=\"scores\">
+        <figcaption>
+            <h3>" . $row['Title'] . "</h3>
+            <h4>by " . $row['Composer'] . "</h4>
+            <h4>" . $row['Instruments_name'] . " - " . $row['Difficulty_name'] . "</h4>
+            <p>" . $row['Price'] . " zł</p>
+        </figcaption>
+    </figure>
+</a>";
+                        $i++;
+                    }
+
                 }
+
+                /* close result set */
+                $result->close();
 
                 ?>
             </article>
