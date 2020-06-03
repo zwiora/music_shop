@@ -15,92 +15,78 @@
 <?php
 
 require_once "element/header.php";
+require_once "connect.php";
 
-?>
+$connection = new mysqli($host, $dbUser, $dbPassword, $dbName);
 
-<main class="basket">
-    <h1>Your list</h1>
-    <section class="basket_list">
-        <article>
+$fullPrice = 0;
+
+if (!$connection) {
+    echo "Blad: " . mysqli_connect_error();
+} else {
+
+
+    ?>
+
+    <main class="basket">
+        <h1>Your list</h1>
+        <section class="basket_list">
             <?php
 
-            for($i = 0; $i < $_SESSION['x']; $i++){
-                echo $_SESSION['id'.$i]."<br>";
+            for ($i = 0; $i < $_SESSION['x']; $i++) {
+
+                $sql = "SELECT * FROM `products` INNER JOIN instruments ON instruments.Instrument_id = products.Instrument INNER JOIN difficulty ON difficulty.Difficulty_id = products.Difficulty WHERE products.Id = " . $_SESSION['id' . $i];
+
+                if ($result = $connection->query($sql)) {
+                    $row = $result->fetch_assoc();
+
+                    $fullPrice += $row['Price'];
+                    ?>
+                    <article>
+                        <figure>
+                            <?php
+                            echo "<img src=\"img/product/" .$row['Image']."\" alt=\"scores\">"
+                            ?>
+                        </figure>
+                        <main>
+                            <h2><?= $row['Title'] ?></h2>
+                            <h4>by <?= $row['Composer'] ?></h4>
+                            <h4><?= $row['Instruments_name'] ?> - <?= $row['Difficulty_name'] ?></h4>
+                            <h3><?= $row['Price'] ?> zł</h3>
+                        </main>
+                        <aside>
+                            <p class="products_count">1</p>
+                            <h2><?= $row['Price'] ?> zł</h2>
+                        </aside>
+                    </article>
+                    <?php
+                }
             }
             ?>
-            <figure>
-                <img src="img/product/we_are_the_world.png" alt="scores">
-            </figure>
+        </section>
+        <section class="all">
             <main>
-                <h2>We are the world</h2>
-                <h4>by Lionel Richie & Michael Jackson</h4>
-                <h4>piano - intermediate</h4>
-                <h3>15,99zł</h3>
+                <h2><?=  $_SESSION['x'] ?> products</h2>
+                <h1><?=  $fullPrice ?> zł</h1>
+                <input type="submit" class="buy" value="Buy">
             </main>
-            <aside>
-                <input value="1">
-                <h2>15,99zł</h2>
-            </aside>
-        </article>
-        <article>
-            <figure>
-                <img src="img/product/we_are_the_world.png" alt="scores">
-            </figure>
-            <main>
-                <h2>We are the world</h2>
-                <h4>by Lionel Richie & Michael Jackson</h4>
-                <h4>piano - intermediate</h4>
-                <h3>15,99zł</h3>
-            </main>
-            <aside>
-                <input value="1">
-                <h2>15,99zł</h2>
-            </aside>
-        </article>
-        <article>
-            <figure>
-                <img src="img/product/we_are_the_world.png" alt="scores">
-            </figure>
-            <main>
-                <h2>We are the world</h2>
-                <h4>by Lionel Richie & Michael Jackson</h4>
-                <h4>piano - intermediate</h4>
-                <h3>15,99zł</h3>
-            </main>
-            <aside>
-                <input value="1">
-                <h2>15,99zł</h2>
-            </aside>
-        </article>
-    </section>
-<!--    <section class="address">-->
-<!--        <h2>Address</h2>-->
-<!--        <label for="aName">First name</label><input id="aName" class="a_input">-->
-<!--        <label for="aSurname">Second name</label><input id="aSurname" class="a_input">-->
-<!--        <label for="aAddress">Address</label><textarea id="aAddress" class="a_input"></textarea>-->
-<!--    </section>-->
-    <section class="all">
-        <main>
-            <h2>3 products</h2>
-            <h1>47,97zł</h1>
-            <input type="submit" class="buy" value="Buy">
-        </main>
-    </section>
-    <section class="similar">
-        <h2>You may also like</h2>
-        <article>
-            <?php
+        </section>
+        <section class="similar">
+            <h2>You may also like</h2>
+            <article>
+                <?php
 
-            for ($i = 0; $i < 4; $i++) {
-                include "element/card_small.php";
-            }
+                for ($i = 0; $i < 4; $i++) {
+                    include "element/card_small.php";
+                }
 
-            ?>
-        </article>
-    </section>
-</main>
+                ?>
+            </article>
+        </section>
+    </main>
 
-<?php
+    <?php
+}
 
 require_once "element/footer.php";
 

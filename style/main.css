@@ -337,7 +337,7 @@ footer p {
 .basket .basket_list article main h4 {
   margin: 1%;
 }
-.basket .basket_list article aside input {
+.basket .basket_list article aside .products_count {
   background-color: #F4F7F7;
   padding: 0.5em;
   width: 50%;
