@@ -33,19 +33,19 @@ if (!$connection) {
         <section class="basket_list">
             <?php
 
-            for ($i = 0; $i < $_SESSION['x']; $i++) {
+            for ($i = 0; $i < $_SESSION['xDifferent']; $i++) {
 
                 $sql = "SELECT * FROM `products` INNER JOIN instruments ON instruments.Instrument_id = products.Instrument INNER JOIN difficulty ON difficulty.Difficulty_id = products.Difficulty WHERE products.Id = " . $_SESSION['id' . $i];
 
                 if ($result = $connection->query($sql)) {
                     $row = $result->fetch_assoc();
 
-                    $fullPrice += $row['Price'];
+                    $fullPrice += $row['Price'] * $_SESSION['number' . $i];
                     ?>
                     <article>
                         <figure>
                             <?php
-                            echo "<img src=\"img/product/" .$row['Image']."\" alt=\"scores\">"
+                            echo "<img src=\"img/product/" . $row['Image'] . "\" alt=\"scores\">"
                             ?>
                         </figure>
                         <main>
@@ -55,8 +55,8 @@ if (!$connection) {
                             <h3><?= $row['Price'] ?> zł</h3>
                         </main>
                         <aside>
-                            <p class="products_count">1</p>
-                            <h2><?= $row['Price'] ?> zł</h2>
+                            <p class="products_count"><?= $_SESSION['number' . $i] ?></p>
+                            <h2><?= $row['Price'] * $_SESSION['number' . $i] ?> zł</h2>
                         </aside>
                     </article>
                     <?php
@@ -66,8 +66,8 @@ if (!$connection) {
         </section>
         <section class="all">
             <main>
-                <h2><?=  $_SESSION['x'] ?> products</h2>
-                <h1><?=  $fullPrice ?> zł</h1>
+                <h2><?= $_SESSION['x'] ?> products</h2>
+                <h1><?= $fullPrice ?> zł</h1>
                 <input type="submit" class="buy" value="Buy">
             </main>
         </section>
