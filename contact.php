@@ -64,12 +64,8 @@ require_once "elements/header.php";
                         $i++;
                     }
                 }
-
-                /* close result set */
                 $result->close();
-
             }
-
             ?>
         </article>
     </section>

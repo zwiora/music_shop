@@ -13,7 +13,6 @@
 <?php
 
 require_once "elements/header.php";
-
 require_once "script/connect.php";
 
 $connection = new mysqli($host, $dbUser, $dbPassword, $dbName);
@@ -23,9 +22,7 @@ if (!$connection) {
 } else {
     $sql = "SELECT * FROM `products` INNER JOIN instruments ON instruments.Instrument_id = products.Instrument INNER JOIN difficulty ON difficulty.Difficulty_id = products.Difficulty ORDER BY `Id` ASC";
     if ($result = $connection->query($sql)) {
-
         $i = 0;
-
         ?>
 
         <main class="index">
@@ -39,7 +36,7 @@ if (!$connection) {
 
                     while ($i < 3) {
                         $row = $result->fetch_assoc();
-                        echo "<a href=\"product.php?id=".$row['Id']."\" class=\"card\">
+                        echo "<a href=\"product.php?id=" . $row['Id'] . "\" class=\"card\">
     <figure><img src=img/product_preview/" . $row['Image'] . " alt=\"scores\">
         <figcaption>
             <h3>" . $row['Title'] . "</h3>
@@ -61,7 +58,7 @@ if (!$connection) {
 
                     while ($i < 6) {
                         $row = $result->fetch_assoc();
-                        echo "<a href=\"product.php?id=".$row['Id']."\" class=\"card\">
+                        echo "<a href=\"product.php?id=" . $row['Id'] . "\" class=\"card\">
     <figure><img src=img/product_preview/" . $row['Image'] . " alt=\"scores\">
         <figcaption>
             <h3>" . $row['Title'] . "</h3>
@@ -83,7 +80,7 @@ if (!$connection) {
 
                     while ($i < 9) {
                         $row = $result->fetch_assoc();
-                        echo "<a href=\"product.php?id=".$row['Id']."\" class=\"card\">
+                        echo "<a href=\"product.php?id=" . $row['Id'] . "\" class=\"card\">
     <figure><img src=img/product_preview/" . $row['Image'] . " alt=\"scores\">
         <figcaption>
             <h3>" . $row['Title'] . "</h3>
@@ -101,15 +98,9 @@ if (!$connection) {
         </main>
 
         <?php
-
     }
-
-    /* close result set */
     $result->close();
-
 }
-
-
 require_once "elements/footer.php";
 
 ?>

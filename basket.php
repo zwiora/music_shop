@@ -22,8 +22,6 @@ $fullPrice = 0;
 if (!$connection) {
     echo "Blad: " . mysqli_connect_error();
 } else {
-
-
     ?>
 
     <main class="basket">
@@ -93,10 +91,7 @@ if (!$connection) {
 </a>";
                         $i++;
                     }
-
                 }
-
-                /* close result set */
                 $result->close();
 
                 ?>

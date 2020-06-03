@@ -42,7 +42,7 @@ $row = $result->fetch_assoc();
                 <p><?= $row['Instruments_name'] ?></p>
                 <p><?= $row['Difficulty_name'] ?></p>
                 <?php
-                echo "<a href=\"script/addToBasket.php?id=". $row['Id'] ." \">Add to basket</a>";
+                echo "<a href=\"script/addToBasket.php?id=" . $row['Id'] . " \">Add to basket</a>";
                 ?>
             </article>
             <section class="details">
@@ -55,10 +55,7 @@ $row = $result->fetch_assoc();
         <h2>Similar products</h2>
         <article>
             <?php
-
-            /* close result set */
             $result->close();
-
             }
 
             $sql = "SELECT * FROM `products` INNER JOIN instruments ON instruments.Instrument_id = products.Instrument INNER JOIN difficulty ON difficulty.Difficulty_id = products.Difficulty ORDER BY `Id` ASC";
@@ -80,12 +77,8 @@ $row = $result->fetch_assoc();
 </a>";
                     $i++;
                 }
-
             }
-
-            /* close result set */
             $result->close();
-
             }
             ?>
         </article>
