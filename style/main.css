@@ -16,6 +16,7 @@ body > div {
 body {
   background-color: #F4F7F7;
   color: #34495E;
+  font-weight: normal;
 }
 body h1 {
   font-size: 3em;
@@ -25,10 +26,10 @@ body h2 {
 }
 body a {
   color: #34495E;
+  text-decoration: none;
 }
 body a:hover {
   color: #34495E;
-  text-decoration: none;
 }
 body h4 {
   color: #707070;
@@ -85,10 +86,11 @@ body section figure img {
   text-align: center;
   font-size: 1.5em;
   justify-content: space-around;
+  align-items: center;
   display: flex;
 }
 .header nav a {
-  flex-basis: 15%;
+  flex-basis: 20%;
   transition-duration: 0.5s;
 }
 .header nav a:hover {
@@ -97,10 +99,13 @@ body section figure img {
 .header nav label {
   flex-basis: 30%;
   background-color: #F4F7F7;
-  padding: 0.5%;
   border-radius: 1em;
   color: #34495E;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1%;
 }
 .header nav label input {
   background-color: #F4F7F7;
