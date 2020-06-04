@@ -4,6 +4,7 @@ body {
   background-color: $clrLight;
 
   color: $clrFont;
+  font-weight: normal;
 
   h1 {
     font-size: 3em;
@@ -14,10 +15,10 @@ body {
   }
   a {
     color: $clrFont;
+    text-decoration: none;
 
     &:hover {
       color: $clrFont;
-      text-decoration: none;
     }
   }
 
