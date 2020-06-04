@@ -29,6 +29,9 @@ if (!$connection) {
         <section class="basket_list">
             <?php
 
+            if ($_SESSION['x'] > 0){
+
+
             for ($i = 0; $i < $_SESSION['xDifferent']; $i++) {
 
                 $sql = "SELECT * FROM `products` INNER JOIN instruments ON instruments.Instrument_id = products.Instrument INNER JOIN difficulty ON difficulty.Difficulty_id = products.Difficulty WHERE products.Id = " . $_SESSION['id' . $i];
@@ -45,7 +48,10 @@ if (!$connection) {
                             ?>
                         </figure>
                         <main>
-                            <h2><?= $row['Title'] ?></h2>
+                            <?php
+                            echo "<a href=\"product.php?id=".$row['Id']."\">";
+                            ?>
+                            <h2><?= $row['Title'] ?></h2></a>
                             <h4>by <?= $row['Composer'] ?></h4>
                             <h4><?= $row['Instruments_name'] ?> - <?= $row['Difficulty_name'] ?></h4>
                             <h3><?= $row['Price'] ?> zł</h3>
@@ -65,12 +71,23 @@ if (!$connection) {
                 <h2><?= $_SESSION['x'] ?> products</h2>
                 <h1><?= $fullPrice ?> zł</h1>
                 <input type="submit" class="buy" value="Buy">
+                <a href="script/clearBasket.php" class="buy">Reset</a>
             </main>
         </section>
         <section class="similar">
             <h2>You may also like</h2>
             <article>
+            <?php
+            }
+            else{
+            ?>
+            <p class="empty_basket">There's nothing here :(</p>
+        </section>
+        <section class="similar">
+            <h2>See our products</h2>
+            <article>
                 <?php
+                }
 
                 $sql = "SELECT * FROM `products` INNER JOIN instruments ON instruments.Instrument_id = products.Instrument INNER JOIN difficulty ON difficulty.Difficulty_id = products.Difficulty ORDER BY `Id` ASC";
                 if ($result = $connection->query($sql)) {

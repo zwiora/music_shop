@@ -371,6 +371,11 @@ footer p {
   font-size: 3em;
   margin: 0;
 }
+.basket .basket_list .empty_basket {
+  font-size: 2em;
+  color: #707070;
+  margin: 5% 0 7% 0;
+}
 .basket .address {
   background-color: #AACFD0;
 }
