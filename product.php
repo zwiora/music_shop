@@ -37,16 +37,15 @@ $row = $result->fetch_assoc();
                 <img src="img/product/<?= $row['Image'] ?>" alt="scores">
             </figure>
             <article class="product_info ">
-                <p class="p1"><?= $row['Instruments_name'] ?></p>
-                <p class="p2"><?= $row['Difficulty_name'] ?></p>
                 <h2 class="p3"><?= $row['Price'] ?> zł</h2>
                 <?php
                 echo "<a href=\"script/addToBasket.php?id=" . $row['Id'] . " \">Add to basket</a>";
                 ?>
-                <section class="details">
-                    <h2>Details</h2>
-                    <p><?= $row['Details'] ?></p>
-                </section>
+                <ul>
+                    <li class="li1"><?= $row['Instruments_name'] ?></li>
+                    <li class="li1"><?= $row['Difficulty_name'] ?></li>
+                    <li><?= $row['Details'] ?></li>
+                </ul>
             </article>
         </main>
     </section>
